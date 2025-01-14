@@ -1,5 +1,5 @@
-@import "helpers";
-@import "fonts/clear-sans.css";
+@import 'helpers';
+@import 'fonts/clear-sans.css';
 
 $field-width: 500px;
 $grid-spacing: 15px;
@@ -11,19 +11,19 @@ $legend-border-radius: 2px;
 
 $mobile-threshold: $field-width + 20px;
 
-$text-color: #4D2523;
-$bright-text-color: #FFF;
-$points-text-color: #3C1B1A;
+$text-color: #4d2523;
+$bright-text-color: #fff;
+$points-text-color: #3c1b1a;
 
-$tile-color: #FFF;
-$tile-gold-color: #582E74;
+$tile-color: #fff;
+$tile-gold-color: #582e74;
 /* $tile-gold-glow-color: lighten($tile-gold-color, 15%); */
-$tile-gold-glow-color: rgb(0,0,255);
+$tile-gold-glow-color: rgb(0, 0, 255);
 
 $mix-perc: 75%;
 
 $game-container-margin-top: 11px;
-$game-container-background: #F67098;
+$game-container-background: #f67098;
 
 $transition-speed: 100ms;
 
@@ -31,29 +31,42 @@ $base: 2;
 $limit: 13;
 
 // Colors for all 11 states, false = no special color
-$special-colors: false false, // 2
-                 false false, // 4
-                 false true, // 8
-                 false true, // 16
-                 false true, // 32
-                 false true, // 64
-                 false true, // 128
-                 false true, // 256
-                 false true, // 512
-                 false true, // 1024
-                 false true, // 2048
-                 false true, // 4096
-                 false true; // 8192
+$special-colors: false false,
+  // 2
+  false false,
+  // 4
+  false true,
+  // 8
+  false true,
+  // 16
+  false true,
+  // 32
+  false true,
+  // 64
+  false true,
+  // 128
+  false true,
+  // 256
+  false true,
+  // 512
+  false true,
+  // 1024
+  false true,
+  // 2048
+  false true,
+  // 4096
+  false true; // 8192
 
 $title-container-size: 30px;
 
-html, body {
+html,
+body {
   margin: 0;
   padding: 0;
 
   background-color: #fff;
   color: $text-color;
-  font-family: "Clear Sans", "Helvetica Neue", Arial, sans-serif;
+  font-family: 'Clear Sans', 'Helvetica Neue', Arial, sans-serif;
   font-size: 18px;
 }
 
@@ -81,11 +94,9 @@ h1.title {
 }
 
 .title-container {
-
-    position: relative;
-    display: inline-block;
-    padding-bottom: 10px;
-
+  position: relative;
+  display: inline-block;
+  padding-bottom: 10px;
 }
 
 @include keyframes(move-up) {
@@ -104,7 +115,8 @@ h1.title {
   text-align: right;
 }
 
-.score-container, .best-container {
+.score-container,
+.best-container {
   $height: 19px;
 
   overflow: hidden;
@@ -144,7 +156,7 @@ h1.title {
     font-size: $height;
     line-height: $height;
     font-weight: bold;
-    color: rgba($text-color, .9);
+    color: rgba($text-color, 0.9);
     z-index: 100;
     @include animation(move-up 600ms ease-in);
     @include animation-fill-mode(both);
@@ -156,11 +168,11 @@ h1.title {
 }
 
 .score-container:after {
-  content: "Score";
+  content: 'Score';
 }
 
 .best-container:after {
-  content: "Best"
+  content: 'Best';
 }
 
 p {
@@ -250,7 +262,7 @@ hr {
       right: 0;
       bottom: 0;
       left: 0;
-      background: rgba($tile-color, .7);
+      background: rgba($tile-color, 0.7);
       z-index: 100;
 
       text-align: center;
@@ -275,9 +287,9 @@ hr {
         margin-left: 9px;
         // margin-top: 59px;
 
-	&.keep-playing-button {
-	  display: none;
-	}
+        &.keep-playing-button {
+          display: none;
+        }
       }
 
       .score-sharing {
@@ -290,15 +302,16 @@ hr {
       @include animation-fill-mode(both);
 
       &.game-won {
-        background: rgba($tile-gold-color, .5);
+        background: rgba($tile-gold-color, 0.5);
         color: $bright-text-color;
 
-	a.keep-playing-button {
-	  display: inline-block;
-	}
+        a.keep-playing-button {
+          display: inline-block;
+        }
       }
 
-      &.game-won, &.game-over {
+      &.game-won,
+      &.game-over {
         display: block;
       }
     }
@@ -317,7 +330,7 @@ hr {
     }
 
     &:after {
-      content: "";
+      content: '';
       display: block;
       clear: both;
     }
@@ -331,7 +344,7 @@ hr {
 
     border-radius: $tile-border-radius;
 
-    background: rgba($tile-color, .35);
+    background: rgba($tile-color, 0.35);
 
     &:last-child {
       margin-right: 0;
@@ -344,7 +357,8 @@ hr {
   }
 
   .tile {
-    &, .tile-inner {
+    &,
+    .tile-inner {
       width: ceil($tile-size);
       height: ceil($tile-size);
       line-height: $tile-size + 10px;
@@ -422,8 +436,7 @@ hr {
       $glow-opacity: max($exponent - 4, 0) / ($limit - 4);
 
       @if not $special-background {
-        box-shadow: 0 0 30px 10px rgba($tile-gold-glow-color, $glow-opacity / 1.8),
-                    inset 0 0 0 1px rgba(white, $glow-opacity / 3);
+        box-shadow: 0 0 30px 10px rgba($tile-gold-glow-color, $glow-opacity / 1.8), inset 0 0 0 1px rgba(white, $glow-opacity / 3);
       }
 
       // Adjust font size for bigger numbers
@@ -528,7 +541,8 @@ hr {
   $tile-border-radius: 3px;
   $game-container-margin-top: 17px;
 
-  html, body {
+  html,
+  body {
     font-size: 15px;
   }
 
@@ -551,7 +565,8 @@ hr {
     margin: 0 auto;
   }
 
-  .score-container, .best-container {
+  .score-container,
+  .best-container {
     margin-top: 0;
     padding: 15px 0px;
     min-width: 40px;
@@ -571,7 +586,8 @@ hr {
     margin-top: 10px;
   }
 
-  .restart-button, .retry-button {
+  .restart-button,
+  .retry-button {
     width: 42%;
     padding: 0;
     display: block;
@@ -650,7 +666,7 @@ hr {
 
   border-radius: $tile-border-radius;
 
-  background: rgba($tile-color, .35);
+  background: rgba($tile-color, 0.35);
 
   img {
     width: 100%;
@@ -689,8 +705,7 @@ $exponent: 1;
     $glow-opacity: max($exponent - 4, 0) / ($limit - 4);
 
     @if not $special-background {
-      box-shadow: 0 0 30px 5px rgba($tile-gold-glow-color, $glow-opacity / 1.8),
-                  inset 0 0 0 1px rgba(white, $glow-opacity / 3);
+      box-shadow: 0 0 30px 5px rgba($tile-gold-glow-color, $glow-opacity / 1.8), inset 0 0 0 1px rgba(white, $glow-opacity / 3);
     }
   }
 
